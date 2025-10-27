@@ -1,0 +1,102 @@
+/* ================================
+   Estilos padrão - MOBILE FIRST
+   ================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+
+}
+
+:root {
+    color-scheme: dark only;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: white;
+    background-repeat: repeat-y;
+    background-size: 100%;
+    background-position: center;
+    overflow-x: hidden;
+}
+
+html,
+body {
+    height: 100%;
+    overflow-x: hidden;
+    position: relative;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:visited {
+    color: inherit;
+}
+
+a:active,
+a:hover {
+    color: inherit;
+}
+
+html.no-scroll,
+body.no-scroll {
+    overflow: hidden;
+    min-width: 100%;
+}
+
+
+header {
+    background-color: black;
+    height: 100vh;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    width: 100%;
+    height: auto;
+}
+
+.contatos {
+    margin-left: 1rem;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    gap: .6rem;
+}
+
+
+.contato-links {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .35rem .6rem;
+    border-radius: .5rem;
+}
+
+.contato-links p {
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+.contato-links img {
+    width: 1.4rem;
+    height: auto;
+    display: block;
+}
