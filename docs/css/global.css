@@ -1,3 +1,22 @@
+/* ================
+  Importação de Fontes
+  ================= */
+
+  @font-face {
+    font-family: 'Gravitas_One';
+    src: url(/docs/fonts/Gravitas_One/GravitasOne-Regular.ttf) format('truetype');
+    font-display: swap;
+}
+
+  @font-face {
+    font-family: 'Italiana';
+    src: url(/docs/fonts/Italiana/Italiana-Regular.ttf) format('truetype');
+    font-display: swap;
+}
+
+
+
+
 /* ================================
    Botão do whatsapp
    ================================ */
@@ -24,6 +43,8 @@
   width: 30px;
   height: 30px;
 }
+
+
 
 
 

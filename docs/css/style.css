@@ -58,45 +58,128 @@ body.no-scroll {
 
 
 header {
-    background-color: black;
-    height: 100vh;
+    background-color: rgb(255, 253, 253);
+    height: 95vh;
     padding: 0;
     display: flex;
     flex-direction: column;
 }
 
-.logo {
+header.hero {
+    /* imagem usada via elemento <img.hero-bg> */
+    min-height: 60vh;
+    /* ajustar conforme necessário */
+    position: relative;
+}
+
+/* imagem de fundo posicionada fora do fluxo */
+.hero-bg {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: auto;
+    object-fit: cover;
+    object-position: center;
+    pointer-events: none;
+    /* não atrapalha cliques */
+    z-index: 0;
 }
+
 
 .contatos {
-    margin-left: 1rem;
-    margin-top: 2rem;
+    margin-right: 1rem;
+    margin-top: 15rem;
     display: flex;
     flex-direction: column;
-    align-items: left;
-    gap: .6rem;
+    align-items: flex-end;
+    gap: 1.5rem;
+    position: relative;
+    z-index: 1;
 }
-
 
 .contato-links {
     display: flex;
     align-items: center;
-    gap: .5rem;
-    padding: .35rem .6rem;
-    border-radius: .5rem;
+    text-align: center;
+    gap: 1.1rem;
+    padding: 6px 8px;
+    border-radius: 6px;
 }
 
 .contato-links p {
     color: #ffffff;
-    font-family: 'Roboto', sans-serif;
-    font-size: 0.95rem;
+    font-family: 'Playfair Display', 'Italiana', 'Roboto', sans-serif;
+    font-size: 2rem;
     margin: 0;
 }
 
 .contato-links img {
-    width: 1.4rem;
+    margin-top: .4rem;
+    width: 2rem;
     height: auto;
     display: block;
+}
+
+
+
+.portifolio-btn{
+    position: relative;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 210px;
+    height: 80px;
+    margin: 10rem auto 0;
+    border-radius: 10px;
+    background: #8C6E00;
+    color: #FFF9EB;
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    text-decoration: none;
+    box-shadow: 0 6px 0 rgba(0,0,0,0.25);
+    transition: transform .15s ease, box-shadow .15s ease;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+/* brilho sutil */
+.portifolio-btn::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, rgba(255,255,255,0.06), rgba(255,255,255,0.00) 40%);
+    opacity: 0;
+    transition: opacity .28s ease, transform .28s ease;
+    pointer-events: none;
+    transform: translateY(8%);
+}
+
+/* hover/focus (subida e sombra) */
+.portifolio-btn:hover,
+.portifolio-btn:focus{
+    transform: translateY(-6px);
+    box-shadow: 0 14px 20px rgba(0,0,0,0.22);
+    outline: none;
+}
+.portifolio-btn:hover::after,
+.portifolio-btn:focus::after{
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* efeito de clique (apertar) */
+.portifolio-btn:active{
+    transform: translateY(-2px) scale(.99);
+    box-shadow: 0 8px 12px rgba(0,0,0,0.20);
+}
+
+/* ripple (estilos básicos; a animação é feita pelo JS via inline styles) */
+.portifolio-btn .ripple-effect{
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    transform: scale(0);
+    opacity: 1;
+    will-change: transform, opacity;
 }
