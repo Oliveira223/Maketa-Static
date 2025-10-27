@@ -14,6 +14,11 @@
     font-display: swap;
 }
 
+  @font-face {
+    font-family: 'Playfair Display';
+    src: url(/docs/fonts/Playfair_Display/PlayfairDisplay-VariableFont_wght.ttf) format('truetype');
+    font-display: swap;
+}
 
 
 

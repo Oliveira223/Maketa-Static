@@ -128,32 +128,23 @@ header.hero {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+
     width: 210px;
     height: 80px;
-    margin: 10rem auto 0;
+    margin: 8rem auto 0;
     border-radius: 10px;
+
     background: #8C6E00;
     color: #FFF9EB;
     font-family: 'Playfair Display', serif;
     font-size: 22px;
+
     text-decoration: none;
-    box-shadow: 0 6px 0 rgba(0,0,0,0.25);
     transition: transform .15s ease, box-shadow .15s ease;
     cursor: pointer;
     overflow: hidden;
 }
 
-/* brilho sutil */
-.portifolio-btn::after{
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(120deg, rgba(255,255,255,0.06), rgba(255,255,255,0.00) 40%);
-    opacity: 0;
-    transition: opacity .28s ease, transform .28s ease;
-    pointer-events: none;
-    transform: translateY(8%);
-}
 
 /* hover/focus (subida e sombra) */
 .portifolio-btn:hover,
