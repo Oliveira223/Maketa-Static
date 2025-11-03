@@ -34,6 +34,8 @@ body {
     height: 100%;
     overflow-x: hidden;
     position: relative;
+    /* Snap vertical quando próximo do limite */
+    scroll-snap-type: y proximity;
 }
 
 a {
@@ -58,81 +60,81 @@ body.no-scroll {
 
 
 header {
-    background-color: rgb(255, 253, 253);
-    height: 95vh;
+    background-color: rgb(0, 0, 0);
+    height: 100vh;
     padding: 0;
     display: flex;
     flex-direction: column;
+    /* Alinha início do header ao snap */
+    scroll-snap-align: start;
 }
-
-header.hero {
-    /* imagem usada via elemento <img.hero-bg> */
-    min-height: 60vh;
-    /* ajustar conforme necessário */
-    position: relative;
-}
-
-/* imagem de fundo posicionada fora do fluxo */
-.hero-bg {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    object-position: center;
-    pointer-events: none;
-    /* não atrapalha cliques */
-    z-index: 0;
-}
-
 
 .contatos {
     margin-right: 1rem;
-    margin-top: 15rem;
+    margin-top: 7rem;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    gap: 1.5rem;
+    gap: 0.8rem;
     position: relative;
     z-index: 1;
 }
 
 .contato-links {
-    display: flex;
+    position: relative;
+    display: inline-flex;
     align-items: center;
-    text-align: center;
-    gap: 1.1rem;
-    padding: 6px 8px;
+    gap: 0.5rem;
+    padding-bottom: 0.25rem; /* espaço para a linha */
     border-radius: 6px;
 }
+
 
 .contato-links p {
     color: #ffffff;
     font-family: 'Playfair Display', 'Italiana', 'Roboto', sans-serif;
-    font-size: 2rem;
+    font-size: 1.2rem;
+    letter-spacing: 0.15rem;
     margin: 0;
 }
 
 .contato-links img {
     margin-top: .4rem;
-    width: 2rem;
+    width: 1.5rem;
     height: auto;
     display: block;
 }
 
 
+.contato-links::after {
+    content: "";
+    position: absolute;
+    left: 38%;
+    bottom: 0;
+    transform: translateX(-50%) scaleX(0);
+    transform-origin: center;
+    width: 70%;
+    height: 2px;
+    background: #fff;
+    transition: transform 180ms ease;
+    pointer-events: none;
+}
+
+.contato-links:hover::after,
+a:hover .contato-links::after {
+    transform: translateX(-50%) scaleX(1);
+}
 
 .portifolio-btn{
-    position: relative;
     z-index: 2;
     display: inline-flex;
     align-items: center;
     justify-content: center;
 
     width: 210px;
-    height: 80px;
+    height: 3.5rem;
     margin: 8rem auto 0;
-    border-radius: 10px;
+    border-radius: 0.4rem;
 
     background: #8C6E00;
     color: #FFF9EB;
@@ -173,4 +175,18 @@ header.hero {
     transform: scale(0);
     opacity: 1;
     will-change: transform, opacity;
+}
+
+.section1{
+    background-color: #fff;
+    height: 100vh;
+    /* Alinha início da seção ao snap */
+    scroll-snap-align: start;
+}
+
+.section2{
+    background-color: #8C6E00;
+    height: 100vh;
+    /* Alinha início da seção ao snap */
+    scroll-snap-align: start;
 }
