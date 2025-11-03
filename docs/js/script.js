@@ -22,13 +22,18 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!active) return;
       const aRect = active.getBoundingClientRect();
       const lRect = navList.getBoundingClientRect();
-      const x = aRect.left - lRect.left;
-      // alinhar verticalmente com o topo do item ativo (sem deslocamento)
-      const y = aRect.top - lRect.top;
+      const styles = getComputedStyle(navList);
+      const pad = Number(parseFloat(styles.getPropertyValue('--slider-pad'))) || 0;
+      const offsetY = Number(parseFloat(styles.getPropertyValue('--slider-offset-y'))) || 0;
+      // padding uniforme: expande igualmente no eixo X e Y
+      const x = (aRect.left - lRect.left) - pad;
+      const y = (aRect.top - lRect.top) - pad + offsetY;
+      const w = aRect.width + pad * 2;
+      const h = aRect.height + pad * 2;
       navList.style.setProperty('--slider-x', Math.round(x) + 'px');
       navList.style.setProperty('--slider-y', Math.round(y) + 'px');
-      navList.style.setProperty('--slider-w', Math.round(aRect.width) + 'px');
-      navList.style.setProperty('--slider-h', Math.round(aRect.height) + 'px');
+      navList.style.setProperty('--slider-w', Math.round(w) + 'px');
+      navList.style.setProperty('--slider-h', Math.round(h) + 'px');
     } catch (_) { /* silencioso */ }
   };
 

@@ -164,6 +164,9 @@ a:hover .contato-links::after {
     position: relative; /* permite slider absoluto */
     overflow: hidden;
     max-width: calc(100vw - 16px); /* evita que as extremidades saiam da tela */
+    /* padding uniforme do slider em relação ao item ativo */
+    --slider-pad: 0.5px;
+    --slider-offset-y: -0.6px; /* sobe o destaque/botão 2px */
 }
 
 /* Slider animado do item ativo (movimenta suavemente entre abas) */
@@ -203,6 +206,7 @@ a:hover .contato-links::after {
     align-items: center;
     justify-content: center;
     padding: 0.5rem 0.78rem; /* um pouco mais compacto */
+    line-height: 1; /* garante mesmo padding acima e abaixo */
     border-radius: 999px;
     font-family: 'Playfair Display', 'Italiana', 'Roboto', sans-serif;
     font-size: 0.9rem;
@@ -234,7 +238,7 @@ a:hover .contato-links::after {
         backdrop-filter: none;
         max-width: 900px; /* limita largura no desktop para estética */
     }
-    .hero-nav .nav-link { padding: 0.66rem 1.08rem; font-size: 1rem; } /* leve redução no desktop */
+    .hero-nav .nav-link { padding: 0.66rem 1.08rem; font-size: 1rem; line-height: 1; } /* leve redução no desktop */
     .hero-nav .nav-link.active { background: transparent; color: #FFF9EB; }
 }
 
@@ -254,9 +258,10 @@ a:hover .contato-links::after {
 
 
 /* ajuste fino para telas muito estreitas */
-@media (max-width: 360px) {
-    .hero-nav .nav-link { padding: 0.5rem 0.7rem; font-size: 0.85rem; }
-    .hero-nav .nav-list li + li::before { margin: 0 .35rem; width: 4px; height: 4px; }
+@media (max-width: 390px) {
+    .hero-nav .nav-link { padding: 0.5rem 0.68rem; font-size: 0.7rem; line-height: 1; }
+    .hero-nav .nav-list { padding: 0.28rem; }
+    .hero-nav .nav-list li + li::before { margin: 0 .32rem; width: 3px; height: 3px; }
 }
 
 .section1{
