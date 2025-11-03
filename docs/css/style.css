@@ -19,7 +19,7 @@
   --color-gold: #8C6E00;
 }
 
-html {
+html, body {
   scroll-behavior: smooth;
 }
 
@@ -36,7 +36,9 @@ body {
   height: 100%;
   overflow-x: hidden;
   position: relative;
-  scroll-snap-type: y proximity;
+  scroll-snap-type: none;
+  /* Evita scroll chaining e pull-to-refresh ao subir */
+  overscroll-behavior-y: none;
 }
 
 /* quando rolando para cima, desativa o snap */
@@ -75,7 +77,6 @@ header {
   display: flex;
   flex-direction: column;
   position: relative;
-  scroll-snap-align: start;
 }
 
 /* Hero com logo repetida verticalmente */
@@ -276,7 +277,6 @@ a:hover .contato-links::after {
 .section2,
 .section3 {
   height: 100vh;
-  scroll-snap-align: start;
 }
 
 .section1 {
