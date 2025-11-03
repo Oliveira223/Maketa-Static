@@ -318,6 +318,11 @@ a:hover .contato-links::after {
    DESKTOP
    ======================================= */
 @media (min-width: 768px) {
+  .mobile{
+    display: none;
+  }
+
+  
   .hero-nav {
     position: fixed;
     top: 20px;

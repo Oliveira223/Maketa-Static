@@ -87,9 +87,76 @@ document.addEventListener('DOMContentLoaded', () => {
   // Inicialização
   initNavigation();
   initComponents();
+  // Snap direcional: puxa para a seção quando 90% estiver visível ao rolar para baixo
+  initDirectionalSnap();
 });
 
 
-// =====================================
-// FIM dos módulos do script principal
-// =====================================
+
+
+// =============================
+// MÓDULO: Snap Direcional
+// - Ao rolar para baixo: quando 90% de uma seção estiver visível,
+//   rola suavemente para alinhar a seção no topo (100vh já definido no CSS)
+// - Ao rolar para cima: não faz snap
+// =============================
+function initDirectionalSnap() {
+  try {
+    const sections = Array.from(document.querySelectorAll('section.section1, section.section2, section.section3'));
+    if (sections.length === 0) return;
+
+    let lastY = window.scrollY;
+    let direction = 'down';
+    const snappedSet = new Set();
+    const SNAP_THRESHOLD = 0.85; // 90%
+    const COOLDOWN_MS = 500; // evita múltiplos snaps em sequência
+    let lastSnapAt = 0;
+
+    // Detecta direção do scroll
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      const delta = y - lastY;
+      if (Math.abs(delta) > 2) {
+        direction = delta > 0 ? 'down' : 'up';
+      }
+      lastY = y;
+    }, { passive: true });
+
+    // Observer principal: aciona quando >= 90% visível
+    const observer = new IntersectionObserver((entries) => {
+      const now = Date.now();
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        if (direction !== 'down') return; // só ao rolar para baixo
+        if (entry.intersectionRatio < SNAP_THRESHOLD) return;
+
+        const el = entry.target;
+        const alreadySnapped = snappedSet.has(el);
+        const cooldownOk = (now - lastSnapAt) > COOLDOWN_MS;
+        const top = el.getBoundingClientRect().top;
+
+        // Evita snap se já está alinhado ou se acabou de snapar
+        if (!alreadySnapped && cooldownOk && top > 1) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          snappedSet.add(el);
+          lastSnapAt = now;
+        }
+      });
+    }, { threshold: [SNAP_THRESHOLD] });
+
+    sections.forEach(sec => observer.observe(sec));
+
+    // Reseta marcação quando a seção não está mais majoritariamente visível
+    const resetObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting || entry.intersectionRatio < 0.2) {
+          snappedSet.delete(entry.target);
+        }
+      });
+    }, { threshold: [0, 0.2] });
+
+    sections.forEach(sec => resetObserver.observe(sec));
+  } catch (err) {
+    console.warn('Falha ao inicializar snap direcional:', err);
+  }
+}
