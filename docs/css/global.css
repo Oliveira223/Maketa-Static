@@ -4,19 +4,19 @@
 
   @font-face {
     font-family: 'Gravitas_One';
-    src: url(/docs/fonts/Gravitas_One/GravitasOne-Regular.ttf) format('truetype');
+    src: url(../fonts/Gravitas_One/GravitasOne-Regular.ttf) format('truetype');
     font-display: swap;
 }
 
   @font-face {
     font-family: 'Italiana';
-    src: url(/docs/fonts/Italiana/Italiana-Regular.ttf) format('truetype');
+    src: url(../fonts/Italiana/Italiana-Regular.ttf) format('truetype');
     font-display: swap;
 }
 
   @font-face {
     font-family: 'Playfair Display';
-    src: url(/docs/fonts/Playfair_Display/PlayfairDisplay-VariableFont_wght.ttf) format('truetype');
+    src: url(../fonts/Playfair_Display/PlayfairDisplay-VariableFont_wght.ttf) format('truetype');
     font-display: swap;
 }
 
