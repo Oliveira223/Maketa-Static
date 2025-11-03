@@ -14,12 +14,17 @@
     font-display: swap;
 }
 
-  @font-face {
+@font-face {
     font-family: 'Playfair Display';
     src: url(../fonts/Playfair_Display/PlayfairDisplay-VariableFont_wght.ttf) format('truetype');
     font-display: swap;
 }
 
+@font-face {
+    font-family: 'Cocomat';
+    src: url(../fonts/Cocomat/Cocomat-Regular.ttf) format('truetype');
+    font-display: swap;
+}
 
 
 /* ================================

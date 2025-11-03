@@ -180,13 +180,70 @@ a:hover .contato-links::after {
 .section1{
     background-color: #fff;
     height: 100vh;
-    /* Alinha início da seção ao snap */
     scroll-snap-align: start;
 }
 
+.section1 h1{
+    color: #000;
+    font-family: 'Cocomat', sans-serif;
+    font-weight: bold;
+    font-size: 3rem;
+    letter-spacing: 0.15rem;
+    padding-left: 1.5rem;
+    padding-top: 1.5rem;
+}
+
 .section2{
+    text-align: right;
     background-color: #8C6E00;
     height: 100vh;
-    /* Alinha início da seção ao snap */
     scroll-snap-align: start;
+}
+
+.section2 h1{
+    color: #FFF9EB;
+    font-family: 'Cocomat', sans-serif;
+    font-weight: bold;
+    font-size: 3rem;
+    letter-spacing: 0.15rem;
+    padding-right: 1.5rem;
+    padding-top: 1.5rem;
+}
+
+.section3{
+    background-color: #fff;
+    height: 100vh;
+    scroll-snap-align: start;
+}
+
+.section3 h1{
+    color: #000;
+    font-family: 'Cocomat', sans-serif;
+    font-weight: bold;
+    font-size: 3rem;
+    letter-spacing: 0.15rem;
+    padding-left: 1.5rem;
+    padding-top: 1.5rem;
+}
+
+
+footer{
+    background-color: #000;
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+footer p{
+    color: #fff;
+    font-family: 'Playfair Display', 'Italiana', 'Roboto', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.15rem;
+    margin-left: 1rem;
+}
+
+footer .copyright{
+    font-size: 1rem;
 }
