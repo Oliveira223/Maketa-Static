@@ -2,12 +2,27 @@
 /* Estilos específicos do componente Footer */
 
 #site-footer {
-  background-color: var(--color-black);
-  height: 20vh;
+  background-color: rgb(31, 28, 28);
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+
+#site-footer h1{
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-weight: 400;
+}
+#site-footer h2 {
+  color: var(--color-white);
+  font-family:  'Roboto', sans-serif;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  letter-spacing: 0.15rem;
 }
 
 #site-footer .copyright {
@@ -16,20 +31,6 @@
   font-size: 1rem;
   letter-spacing: 0.15rem;
 }
-
-#site-footer h1{
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    text-align: center;
-    font-weight: 400;
-}
-#site-footer h2 {
-  color: var(--color-white);
-  font-family: 'Playfair Display', 'Italiana', 'Roboto', sans-serif;
-  font-size: 1rem;
-  letter-spacing: 0.15rem;
-}
-
 
 @media (min-width: 768px) {
   #site-footer .copyright { font-size: 1.1rem; }

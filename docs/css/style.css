@@ -185,7 +185,7 @@ a:hover .contato-links::after {
   position: fixed;
   left: 0;
   right: 0;
-  bottom: 90px;
+  bottom: 60px;
   transform: none;
   z-index: 10;
   display: flex;
@@ -313,6 +313,100 @@ a:hover .contato-links::after {
   padding-right: 1.5rem;
 }
 
+/* =======================================
+   CARROSEL DE PROJETOS
+   ======================================= */
+.projects-carousel {
+  margin: 1rem auto 0.75rem auto;
+  padding: 0 1rem;
+  max-width: 1100px;
+}
+
+.carousel-track {
+  display: flex;
+  gap: clamp(0.5rem, 1.6vw, 1rem);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 0.25rem; /* espaço para setas/dots visuais */
+}
+
+.carousel-item {
+  flex: 0 0 clamp(78%, 86vw, 92%);
+  scroll-snap-align: center;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.22);
+}
+
+.carousel-item img {
+  width: 100%;
+  height: clamp(220px, 48vh, 460px);
+  object-fit: cover;
+  display: block;
+}
+
+.carousel-empty {
+  color: var(--color-cream);
+  background: rgba(0,0,0,0.18);
+  border: 1px dashed rgba(255,255,255,0.35);
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin: 0.75rem 0 0.25rem 0;
+}
+
+.carousel-dots .dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.75);
+  background: rgba(255,255,255,0.45);
+  cursor: pointer;
+  transition: transform 160ms ease, background-color 160ms ease;
+}
+
+.carousel-dots .dot:hover {
+  transform: scale(1.1);
+}
+
+.carousel-dots .dot.active {
+  background: var(--color-cream);
+  border-color: var(--color-cream);
+}
+
+.portfolio-cta {
+  display: flex;
+  justify-content: center;
+  margin: 0.5rem 0 1.25rem 0;
+}
+
+.btn-portfolio {
+  display: inline-block;
+  background: var(--color-cream);
+  color: var(--color-gold);
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 0.7rem 1.3rem;
+  margin-top: 1.2rem;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.18);
+}
+
+.btn-portfolio:hover {
+  filter: brightness(1.05);
+}
+
 
 /* =======================================
    DESKTOP
@@ -362,7 +456,9 @@ a:hover .contato-links::after {
   }
 }
 
-/* Ajustes extras para telas muito estreitas */
+/* ===============================
+  Ajustes extras para telas muito estreitas 
+  =======================================*/
 @media (max-width: 420px) {
   .hero-nav .nav-list {
     --nav-gap: 0.3rem;
@@ -383,3 +479,4 @@ a:hover .contato-links::after {
     --nav-gap: 0.2rem;
   }
 }
+

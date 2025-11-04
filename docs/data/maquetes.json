@@ -1,20 +1,83 @@
 [
   {
-    "id": "mqt-001",
-    "titulo": "Residencial Jardim",
-    "descricao": "Maquete de condomínio com 30 unidades e áreas comuns.",
-    "imagem": "docs/img/maketa.jpg",
-    "slug": "residencial-jardim",
-    "tags": ["residencial", "condomínio"],
-    "ano": 2024
+    "id": "mqt-000",
+    "title": "titulo",
+    "description": "Descrição",
+    "owner": "Propietário",
+    "type": "residencial",
+    "tags": [
+      "residencial",
+      "condomínio"
+    ],
+    "escala": "1:100",
+    "weight": "20kg",
+    "year": 2024,
+    "dimensions": "100x100x100",
+    "prazo": "12 meses",
+    "details": [
+      "Água com acabamento em resina",
+      "Vegetação artificial detalhada",
+      "Veículos escala 1:100"
+    ],
+    "cover": "docs/img/upscalemedia-transformed.jpeg",
+    "gallery": [
+      "docs/img/galeria/mqt-001/01.jpg",
+      "docs/img/galeria/mqt-001/02.jpg",
+      "docs/img/galeria/mqt-001/03.jpg"
+    ]
   },
-   {
-    "id": "mqt-001",
-    "titulo": "Residencial Jardim",
-    "descricao": "Maquete de condomínio com 30 unidades e áreas comuns.",
-    "imagem": "docs/img/maketa.jpg",
-    "slug": "residencial-jardim",
-    "tags": ["residencial", "condomínio"],
-    "ano": 2024
+  {
+    "id": "mqt-000",
+    "title": "titulo",
+    "description": "Descrição",
+    "owner": "Propietário",
+    "type": "residencial",
+    "tags": [
+      "residencial",
+      "condomínio"
+    ],
+    "escala": "1:100",
+    "weight": "20kg",
+    "year": 2024,
+    "dimensions": "100x100x100",
+    "prazo": "12 meses",
+    "details": [
+      "Água com acabamento em resina",
+      "Vegetação artificial detalhada",
+      "Veículos escala 1:100"
+    ],
+    "cover": "docs/img/upscalemedia-transformed.jpeg",
+    "gallery": [
+      "docs/img/galeria/mqt-001/01.jpg",
+      "docs/img/galeria/mqt-001/02.jpg",
+      "docs/img/galeria/mqt-001/03.jpg"
+    ]
+  },  
+  {
+    "id": "mqt-000",
+    "title": "titulo",
+    "description": "Descrição",
+    "owner": "Propietário",
+    "type": "residencial",
+    "tags": [
+      "residencial",
+      "condomínio"
+    ],
+    "escala": "1:100",
+    "weight": "20kg",
+    "year": 2024,
+    "dimensions": "100x100x100",
+    "prazo": "12 meses",
+    "details": [
+      "Água com acabamento em resina",
+      "Vegetação artificial detalhada",
+      "Veículos escala 1:100"
+    ],
+    "cover": "docs/img/upscalemedia-transformed.jpeg",
+    "gallery": [
+      "docs/img/galeria/mqt-001/01.jpg",
+      "docs/img/galeria/mqt-001/02.jpg",
+      "docs/img/galeria/mqt-001/03.jpg"
+    ]
   }
 ]

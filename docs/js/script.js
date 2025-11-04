@@ -94,6 +94,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initComponents();
   // Snap direcional: puxa para a seção quando 90% estiver visível ao rolar para baixo
   initDirectionalSnap();
+
+  // Carrosel de Projetos
+  initProjectsCarousel();
 });
 
 
@@ -165,5 +168,97 @@ function initDirectionalSnap() {
     sections.forEach(sec => resetObserver.observe(sec));
   } catch (err) {
     console.warn('Falha ao inicializar snap direcional:', err);
+  }
+}
+
+// =============================
+// MÓDULO: Carrosel de Projetos
+// - Carrega maquetes de docs/data/maquetes.json
+// - Renderiza até 10 capas como slides com scroll-snap
+// - Cria bolinhas (dots) para navegação e estado ativo
+// =============================
+function initProjectsCarousel() {
+  try {
+    const track = document.getElementById('carousel-track');
+    const dotsRoot = document.getElementById('carousel-dots');
+    if (!track || !dotsRoot) return;
+
+    const render = (maquetes) => {
+      const list = Array.isArray(maquetes) ? maquetes : [];
+      const covers = list
+        .map(m => m?.cover)
+        .filter(Boolean)
+        .slice(0, 10);
+
+      // Limpa
+      track.innerHTML = '';
+      dotsRoot.innerHTML = '';
+
+      if (covers.length === 0) {
+        track.innerHTML = '<div class="carousel-empty">Sem imagens de projetos</div>';
+        return;
+      }
+
+      // Renderiza slides
+      covers.forEach((src, i) => {
+        const item = document.createElement('div');
+        item.className = 'carousel-item';
+        item.setAttribute('role', 'listitem');
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = 'Capa do projeto ' + (i + 1);
+        img.loading = 'lazy';
+        item.appendChild(img);
+        track.appendChild(item);
+      });
+
+      // Renderiza dots
+      const items = Array.from(track.children);
+      items.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', 'Ir para slide ' + (i + 1));
+        dot.addEventListener('click', () => {
+          const el = items[i];
+          if (el) el.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        });
+        dotsRoot.appendChild(dot);
+      });
+
+      // Atualiza dot ativo conforme scroll
+      const setActiveByIndex = (idx) => {
+        const dots = Array.from(dotsRoot.children);
+        dots.forEach((d, j) => d.classList.toggle('active', j === idx));
+      };
+
+      const getNearestIndex = () => {
+        const scrollLeft = track.scrollLeft;
+        let bestIdx = 0;
+        let bestDist = Infinity;
+        items.forEach((el, idx) => {
+          const dist = Math.abs(el.offsetLeft - scrollLeft);
+          if (dist < bestDist) { bestDist = dist; bestIdx = idx; }
+        });
+        return bestIdx;
+      };
+
+      let rafId = null;
+      const onScroll = () => {
+        if (rafId) cancelAnimationFrame(rafId);
+        rafId = requestAnimationFrame(() => setActiveByIndex(getNearestIndex()));
+      };
+      track.addEventListener('scroll', onScroll, { passive: true });
+
+      // Resize recalcula item offsets
+      window.addEventListener('resize', () => setActiveByIndex(getNearestIndex()));
+    };
+
+    // Carrega JSON
+    fetch('docs/data/maquetes.json', { cache: 'no-cache' })
+      .then(res => res.ok ? res.json() : [])
+      .then(render)
+      .catch(() => render([]));
+  } catch (err) {
+    console.warn('Falha ao inicializar carrosel de projetos:', err);
   }
 }
