@@ -2,6 +2,9 @@
 // MÓDULO PRINCIPAL (organização em seções)
 // =====================================
 
+// Evita snap direcional enquanto navega por clique no menu
+let navLockUntil = 0;
+
 document.addEventListener('DOMContentLoaded', () => {
   // Contexto compartilhado
   const navLinks = Array.from(document.querySelectorAll('.hero-nav .nav-link'));
@@ -66,6 +69,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Clique nos links: deixa o navegador rolar para a âncora e atualiza o ativo
     navLinks.forEach(link => {
       link.addEventListener('click', (e) => {
+        // Trava o snap por um curto período durante a rolagem de navegação
+        navLockUntil = Date.now() + 1400; // ~1.4s
         const target = link.getAttribute('data-target');
         if (target) setActiveNav(target);
       });
@@ -125,6 +130,8 @@ function initDirectionalSnap() {
     // Observer principal: aciona quando >= 90% visível
     const observer = new IntersectionObserver((entries) => {
       const now = Date.now();
+      // Se a navegação por clique ainda está em curso, não faça snap
+      if (now < navLockUntil) return;
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
         if (direction !== 'down') return; // só ao rolar para baixo

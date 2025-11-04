@@ -1,0 +1,20 @@
+[
+  {
+    "id": "mqt-001",
+    "titulo": "Residencial Jardim",
+    "descricao": "Maquete de condomínio com 30 unidades e áreas comuns.",
+    "imagem": "docs/img/maketa.jpg",
+    "slug": "residencial-jardim",
+    "tags": ["residencial", "condomínio"],
+    "ano": 2024
+  },
+   {
+    "id": "mqt-001",
+    "titulo": "Residencial Jardim",
+    "descricao": "Maquete de condomínio com 30 unidades e áreas comuns.",
+    "imagem": "docs/img/maketa.jpg",
+    "slug": "residencial-jardim",
+    "tags": ["residencial", "condomínio"],
+    "ano": 2024
+  }
+]
